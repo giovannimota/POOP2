@@ -5,6 +5,7 @@ public class Empregado implements Pagavel{
     private String sobrenome;
     private String cpf;
 
+    //Comentario teste Giovanni
     public Empregado(String nome, String sobrenome, String cpf) {
         this.nome = nome;
         this.sobrenome = sobrenome;
