@@ -7,4 +7,8 @@ public class Assalariado extends Empregado{
         super(nome, sobrenome, cpf);
         this.salarioMensal = salarioMensal;
     }
+
+    public double getSalarioMensal() { return salarioMensal; }
+
+    public void setSalarioMensal(double salarioMensal) { this.salarioMensal = salarioMensal; }
 }

@@ -9,4 +9,12 @@ public class Comissionado extends Empregado{
         this.vendasMensal = vendasMensal;
         this.percComissao = percComissao;
     }
+
+    public double getVendasMensal() { return vendasMensal; }
+
+    public void setVendasMensal(double vendasMensal) { this.vendasMensal = vendasMensal; }
+
+    public double getPercComissao() { return percComissao; }
+
+    public void setPercComissao(double percComissao) { this.percComissao = percComissao; }
 }

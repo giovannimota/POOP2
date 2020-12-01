@@ -12,7 +12,7 @@ public class Empregado implements Pagavel{
     }
 
     public String getNome() {
-        return this.nome;
+        return nome;
     }
 
     public void setNome(String nome) {
@@ -20,7 +20,7 @@ public class Empregado implements Pagavel{
     }
 
     public String getSobrenome() {
-        return this.sobrenome;
+        return sobrenome;
     }
 
     public void setSobrenome(String sobrenome) {
@@ -28,7 +28,7 @@ public class Empregado implements Pagavel{
     }
 
     public String getCpf() {
-        return this.cpf;
+        return cpf;
     }
 
     public void setCpf(String cpf) {

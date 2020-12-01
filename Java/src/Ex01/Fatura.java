@@ -14,7 +14,7 @@ public class Fatura implements Pagavel{
     }
 
     public String getNumero() {
-        return this.numero;
+        return numero;
     }
 
     public void setNumero(String numero) {
@@ -22,7 +22,7 @@ public class Fatura implements Pagavel{
     }
 
     public String getDescriacao() {
-        return this.descricao;
+        return descricao;
     }
 
     public void setDescriacao(String descriacao) {
@@ -30,7 +30,7 @@ public class Fatura implements Pagavel{
     }
 
     public int getQuantidade() {
-        return this.quantidade;
+        return quantidade;
     }
 
     public void setQuantidade(int quantidade) {
@@ -38,7 +38,7 @@ public class Fatura implements Pagavel{
     }
 
     public double getPreco() {
-        return this.preco;
+        return preco;
     }
 
     public void setPreco(double preco) {
