@@ -1,5 +1,6 @@
 package Ex01;
 
+// comentário  random
 public class Empregado implements Pagavel{
     private String nome;
     private String sobrenome;
