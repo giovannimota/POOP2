@@ -10,6 +10,11 @@ public class Comissionado extends Empregado{
         this.percComissao = percComissao;
     }
 
+    @Override
+    public double ganhos() {
+        return vendasMensal * percComissao;
+    }
+
     public double getVendasMensal() { return vendasMensal; }
 
     public void setVendasMensal(double vendasMensal) { this.vendasMensal = vendasMensal; }

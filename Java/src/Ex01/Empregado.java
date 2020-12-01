@@ -11,6 +11,15 @@ public class Empregado implements Pagavel{
         this.cpf = cpf;
     }
 
+    @Override
+    public String toString() {
+        return ("Nome: " + this.nome + " " + this.sobrenome + " - CPF: " + this.cpf);
+    }
+
+    public double ganhos() {
+        return 0.0;
+    }
+
     public String getNome() {
         return nome;
     }
