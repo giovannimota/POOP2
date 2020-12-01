@@ -10,6 +10,19 @@ public class Horista extends Empregado{
         this.horasTrab = horasTrab;
     }
 
+    @Override
+    public double ganhos() {
+        if (horasTrab <= 160) {
+            return  valorHora * horasTrab;
+        }
+
+        double horaExtra;
+
+        horaExtra = horasTrab - 160;
+
+        return (valorHora * 160) + (horaExtra * 1.5 * valorHora);
+    }
+
     public double getValorHora() { return valorHora; }
 
     public void setValorHora(double valorHora) { this.valorHora = valorHora; }

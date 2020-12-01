@@ -8,6 +8,11 @@ public class BaseComissionado extends Comissionado{
         this.salarioBase = salarioBase;
     }
 
+    @Override
+    public double ganhos() {
+        return (salarioBase + (getVendasMensal() * getPercComissao()));
+    }
+
     public double getSalarioBase() { return salarioBase; }
 
     public void setSalarioBase(double salarioBase) { this.salarioBase = salarioBase; }

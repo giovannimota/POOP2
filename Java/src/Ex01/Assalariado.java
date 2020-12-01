@@ -8,6 +8,11 @@ public class Assalariado extends Empregado{
         this.salarioMensal = salarioMensal;
     }
 
+    @Override
+    public double ganhos() {
+        return salarioMensal;
+    }
+
     public double getSalarioMensal() { return salarioMensal; }
 
     public void setSalarioMensal(double salarioMensal) { this.salarioMensal = salarioMensal; }
