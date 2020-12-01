@@ -34,4 +34,9 @@ public class Empregado implements Pagavel{
     public void setCpf(String cpf) {
         this.cpf = cpf;
     }
+
+    @Override
+    public double getValorPagto() {
+        return 0;
+    }
 }
