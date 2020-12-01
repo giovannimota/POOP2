@@ -1,6 +1,6 @@
 package Ex01;
 
-public class Fatura {
+public class Fatura implements Pagavel{
     private String Numero;
     private String Descriacao;
     private int Quatidade;

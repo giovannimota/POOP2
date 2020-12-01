@@ -1,5 +1,5 @@
 package Ex01;
 
-public class BaseComissionado {
+public class BaseComissionado extends Comissionado{
     private double  salarioBase;
 }

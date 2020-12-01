@@ -1,5 +1,5 @@
 package Ex01;
 
-public class Assalariado {
+public class Assalariado extends Empregado{
     private double salarioMensal;
 }

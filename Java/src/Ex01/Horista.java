@@ -1,6 +1,6 @@
 package Ex01;
 
-public class Horista {
+public class Horista extends Empregado{
     private double valorHora;
     private double horasTrab;
 }
