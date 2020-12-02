@@ -2,8 +2,6 @@ package Ex01;
 
 public class Menu {
     public static void main(String[] args) {
-<<<<<<< HEAD
-=======
 
         int[] folhaPagamento;
 
@@ -13,6 +11,5 @@ public class Menu {
 
 
         System.out.println("Nome completo: " + malukoHorista01.getNome() + " " + malukoHorista01.getSobrenome());
->>>>>>> 7efc0329d7a3cbb84eb7678aae7abfdb588e918a
     }
 }
