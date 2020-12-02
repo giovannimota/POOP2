@@ -11,6 +11,14 @@ public class Horista extends Empregado{
     }
 
     @Override
+    public String toString() {
+        return ("\nEmpregado: Horista\n" +
+                "Nome: " + getNome() + " " + getSobrenome() + "\n" +
+                "CPF: " + getCpf() + "\n" +
+                "Salário: " + ganhos() + "\n");
+    }
+
+    @Override
     public double ganhos() {
         if (horasTrab <= 160) {
             return  valorHora * horasTrab;

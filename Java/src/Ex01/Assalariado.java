@@ -9,6 +9,13 @@ public class Assalariado extends Empregado{
     }
 
     @Override
+    public String toString() {
+        return ("\nEmpregado: Assalariado\n" +
+                "Nome: " + getNome() + " " + getSobrenome() + "\n" +
+                "CPF: " + getCpf() + "\n" + "Salário mensal: " + this.salarioMensal + "\n");
+    }
+
+    @Override
     public double ganhos() {
         return salarioMensal;
     }

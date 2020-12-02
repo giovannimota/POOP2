@@ -13,6 +13,11 @@ public class Fatura implements Pagavel{
         this.preco = preco;
     }
 
+    @Override
+    public double getValorPagto() {
+        return 0.0;
+    }
+
     public String getNumero() {
         return numero;
     }
@@ -45,8 +50,4 @@ public class Fatura implements Pagavel{
         this.preco = preco;
     }
 
-    @Override
-    public double getValorPagto() {
-        return 0;
-    }
 }

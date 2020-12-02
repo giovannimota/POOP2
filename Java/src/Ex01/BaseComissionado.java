@@ -9,8 +9,21 @@ public class BaseComissionado extends Comissionado{
     }
 
     @Override
+    public String toString() {
+        return ("Empregado: Assalariado Comissionado\n" +
+                "Nome: " + getNome() + " " + getSobrenome() + "\n" +
+                "CPF: " + getCpf() + "\n" +
+                "Salário: " + ganhos() + "\n");
+    }
+
+    @Override
     public double ganhos() {
         return (salarioBase + (getVendasMensal() * getPercComissao()));
+    }
+
+    @Override
+    public double getValorPagto() {
+        return (0.1 * this.salarioBase);
     }
 
     public double getSalarioBase() { return salarioBase; }

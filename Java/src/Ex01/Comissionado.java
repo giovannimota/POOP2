@@ -11,6 +11,14 @@ public class Comissionado extends Empregado{
     }
 
     @Override
+    public String toString() {
+        return ("Empregado: Comissionado\n" +
+                "Nome: " + getNome() + " " + getSobrenome() + "\n" +
+                "CPF: " + getCpf() + "\n" +
+                "Salario: " + ganhos() + "\n");
+    }
+
+    @Override
     public double ganhos() {
         return vendasMensal * percComissao;
     }
