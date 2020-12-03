@@ -49,5 +49,4 @@ public class Fatura implements Pagavel{
     public void setPreco(double preco) {
         this.preco = preco;
     }
-
 }

@@ -1,13 +1,11 @@
 package Ex01;
 
 public class Assalariado extends Empregado{
-    private double salarioMensal;
 
-    public Assalariado(String nome, String sobrenome, String cpf, double salarioMensal) {
+    public Assalariado(String nome, String sobrenome, String cpf) {
         super(nome, sobrenome, cpf);
-        this.salarioMensal = salarioMensal;
     }
-
+    private double salarioMensal;
     @Override
     public String toString() {
         return ("\nEmpregado: Assalariado\n" +
@@ -17,10 +15,14 @@ public class Assalariado extends Empregado{
 
     @Override
     public double ganhos() {
+        return this.salarioMensal;
+    }
+
+    public double getSalarioMensal() {
         return salarioMensal;
     }
 
-    public double getSalarioMensal() { return salarioMensal; }
-
-    public void setSalarioMensal(double salarioMensal) { this.salarioMensal = salarioMensal; }
+    public void setSalarioMensal(double salarioMensal) {
+        this.salarioMensal = salarioMensal;
+    }
 }

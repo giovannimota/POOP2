@@ -4,10 +4,8 @@ public class Comissionado extends Empregado{
     private double vendasMensal;
     private double percComissao;
 
-    public Comissionado(String nome, String sobrenome, String cpf, double vendasMensal, double percComissao) {
+    public Comissionado(String nome, String sobrenome, String cpf) {
         super(nome, sobrenome, cpf);
-        this.vendasMensal = vendasMensal;
-        this.percComissao = percComissao;
     }
 
     @Override
@@ -20,14 +18,22 @@ public class Comissionado extends Empregado{
 
     @Override
     public double ganhos() {
-        return vendasMensal * percComissao;
+        return (vendasMensal * percComissao) / 100;
     }
 
-    public double getVendasMensal() { return vendasMensal; }
+    public double getVendasMensal() {
+        return vendasMensal;
+    }
 
-    public void setVendasMensal(double vendasMensal) { this.vendasMensal = vendasMensal; }
+    public void setVendasMensal(double vendasMensal) {
+        this.vendasMensal = vendasMensal;
+    }
 
-    public double getPercComissao() { return percComissao; }
+    public double getPercComissao() {
+        return percComissao;
+    }
 
-    public void setPercComissao(double percComissao) { this.percComissao = percComissao; }
+    public void setPercComissao(double percComissao) {
+        this.percComissao = percComissao;
+    }
 }
