@@ -18,7 +18,7 @@ public class BaseComissionado extends Comissionado{
 
     @Override
     public double ganhos() {
-        return (salarioBase + (getVendasMensal() * getPercComissao()));
+        return ((salarioBase * 1.1) + (getVendasMensal() * getPercComissao()));
     }
 
     @Override
