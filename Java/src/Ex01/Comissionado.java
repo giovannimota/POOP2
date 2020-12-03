@@ -10,7 +10,7 @@ public class Comissionado extends Empregado{
 
     @Override
     public String toString() {
-        return ("Empregado: Comissionado\n" +
+        return ("\nEmpregado: Comissionado\n" +
                 "Nome: " + getNome() + " " + getSobrenome() + "\n" +
                 "CPF: " + getCpf() + "\n" +
                 "Salario: " + ganhos() + "\n");
@@ -18,7 +18,7 @@ public class Comissionado extends Empregado{
 
     @Override
     public double ganhos() {
-        return vendasMensal * percComissao;
+        return vendasMensal * percComissao / 100;
     }
 
     public double getVendasMensal() { return vendasMensal; }

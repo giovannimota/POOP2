@@ -9,7 +9,7 @@ public class BaseComissionado extends Comissionado{
 
     @Override
     public String toString() {
-        return ("Empregado: Assalariado Comissionado\n" +
+        return ("\nEmpregado: Assalariado Comissionado\n" +
                 "Nome: " + getNome() + " " + getSobrenome() + "\n" +
                 "CPF: " + getCpf() + "\n" +
                 "Salário: " + ganhos() + "\n");
@@ -17,7 +17,7 @@ public class BaseComissionado extends Comissionado{
 
     @Override
     public double ganhos() {
-        return ((salarioBase * 1.1) + (getVendasMensal() * getPercComissao()));
+        return ((salarioBase * 1.1) + (getVendasMensal() * getPercComissao())/100);
     }
 
     @Override
