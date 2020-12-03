@@ -6,9 +6,9 @@ public class Fatura implements Pagavel{
     private int quantidade;
     private double preco;
 
-    public Fatura(String numero, String descriacao, int quatidade, double preco) {
+    public Fatura(String numero, String descricao, int quatidade, double preco) {
         this.numero = numero;
-        this.descricao = descriacao;
+        this.descricao = descricao;
         this.quantidade = quatidade;
         this.preco = preco;
     }
@@ -26,11 +26,11 @@ public class Fatura implements Pagavel{
         this.numero = numero;
     }
 
-    public String getDescriacao() {
+    public String getDescricao() {
         return descricao;
     }
 
-    public void setDescriacao(String descriacao) {
+    public void setDescricao(String descriacao) {
         this.descricao = descriacao;
     }
 
