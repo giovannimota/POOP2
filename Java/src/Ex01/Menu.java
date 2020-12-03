@@ -11,7 +11,7 @@ public class Menu {
         Assalariado malukoAssalariado01 = new Assalariado("Tadeu", "Silva", "123.456.789-00");
         Comissionado malukoComissionado01 = new Comissionado("Valter", "Oliveira", "123.456.789.11");
         Horista malukoHorista01 = new Horista("Jorge", "Cleberson", "123.456.789.22");
-        BaseComissionado malukoBaseComissionado01 = new BaseComissionado("Jeferson", "Rocha", "123.456.789-33", 10.00,0.50, 4000.00);
+        BaseComissionado malukoBaseComissionado01 = new BaseComissionado("Jeferson", "Rocha", "123.456.789-33");
 
         double vm1, ht1, vm2;
 
@@ -69,7 +69,6 @@ public class Menu {
         malukoHorista01.setHorasTrab(175);
         malukoBaseComissionado01.setVendasMensal(6000.00);
 
-<<<<<<< HEAD
         for (int j=0; j<4; j++){
             folhaPag[2][j] = empregados[j];
         }*/
@@ -78,8 +77,6 @@ public class Menu {
         System.out.println("Valor recebido 02: " + folhaPag[1][1].ganhos());
         System.out.println("Valor recebido 03: " + folhaPag[1][2].ganhos());
         System.out.println("Valor recebido 04: " + folhaPag[1][3].ganhos());
-=======
         System.out.println(malukoHorista01.toString());
->>>>>>> 16a43b1781faa03a6376f460920efb262a65af8a
     }
 }
