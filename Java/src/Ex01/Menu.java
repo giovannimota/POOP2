@@ -1,198 +1,142 @@
 package Ex01;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
+import java.util.Scanner;
+
 public class Menu {
-    public static void main(String[] args) {
-        Empregado folhaPag[][] = new Empregado[12][4];
-        Empregado empregados[] = new Empregado[4];
 
-        Assalariado malukoAssalariado01 = new Assalariado("Tadeu", "Silva", "123.456.789-00");
-        Comissionado malukoComissionado01 = new Comissionado("Valter", "Oliveira", "123.456.789.11");
-        Horista malukoHorista01 = new Horista("Jorge", "Cleberson", "123.456.789.22");
-        BaseComissionado malukoBaseComissionado01 = new BaseComissionado("Jeferson", "Rocha", "123.456.789-33");
+    private static double salarioMensal = 2500;
+    private static double valorHora = 17.5;
+    private static double percComissao = 15;
+    private static double percBaseComissao = 10;
 
-        empregados[0] = malukoAssalariado01;
-        empregados[1] = malukoComissionado01;
-        empregados[2] = malukoHorista01;
-        empregados[3] = malukoBaseComissionado01;
+    private static int FUNCIONARIOS = 4; //Com 4 podemos testar cada tipo de empregado
+    private static int MESES = 12;
+    private static int FATURAS = 3;
 
-        //Valores Fixos
-        malukoAssalariado01.setSalarioMensal(1200.00);
-        malukoComissionado01.setPercComissao(10);
-        malukoHorista01.setValorHora(20.00);
-        malukoBaseComissionado01.setSalarioBase(1400.00);
-        malukoBaseComissionado01.setPercComissao(10);
+    public static void main(String[] args) throws ParseException {
 
-        //Valores para Janeiro
-        malukoComissionado01.setVendasMensal(20000.00);
-        malukoHorista01.setHorasTrab(180);
-        malukoBaseComissionado01.setVendasMensal(6500.00);
-        for (int j=0; j<4; j++){
-            folhaPag[0][j] = empregados[j];
+        Scanner sc = new Scanner(System.in);
+
+        Empregado[][] folhaDePagamento = new Empregado[MESES][FUNCIONARIOS];
+        Fatura[][] faturas = new Fatura[MESES][FATURAS];
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+
+        for (int mes = 0; mes < MESES; mes++) {
+
+            Date dataDeNascimento = formato.parse("1/1/1991");
+            folhaDePagamento[mes][0] = new Assalariado("Fábio", "Carvalho", "111.111.111-11",dataDeNascimento);
+            ((Assalariado)folhaDePagamento[mes][0]).setSalarioMensal(salarioMensal);
+
+            dataDeNascimento = formato.parse("2/2/1992");
+            folhaDePagamento[mes][1] = new Horista("Nicolas", "Meles", "222.222.222-22",dataDeNascimento);
+            ((Horista)folhaDePagamento[mes][1]).setValorHora(valorHora);
+            System.out.println("----------Horista----------");
+            System.out.print("Número de horas trabalhadas do funcionário " + folhaDePagamento[mes][1].getNome() + " no mês de " + mesAtual(mes) + ": ");
+            ((Horista)folhaDePagamento[mes][1]).setHorasTrab(sc.nextDouble());
+            System.out.println();
+
+            dataDeNascimento = formato.parse("3/3/1993");
+            folhaDePagamento[mes][2] = new Comissionado("Joana", "Moreira", "333.333.333-33",dataDeNascimento);
+            ((Comissionado)folhaDePagamento[mes][2]).setPercComissao(percComissao);
+            System.out.println("\n----------Comissionado----------");
+            System.out.print("Valor das vendas do funcionário " + folhaDePagamento[mes][2].getNome() + " no mês de " + mesAtual(mes) + ": ");
+            ((Comissionado)folhaDePagamento[mes][2]).setVendasMensal(sc.nextDouble());
+            System.out.println();
+
+
+            dataDeNascimento = formato.parse("4/4/1994");
+            folhaDePagamento[mes][3] = new BaseComissionado("Márcia", "Rezende", "444.444.444-44", dataDeNascimento);
+            ((BaseComissionado)folhaDePagamento[mes][3]).setSalarioBase(salarioMensal);
+            ((BaseComissionado)folhaDePagamento[mes][3]).setPercComissao(percBaseComissao);
+            System.out.println("\n-----------Base Comissionado----------");
+            System.out.print("Valor das vendas do funcionário " + folhaDePagamento[mes][3].getNome() + " no mês de " + mesAtual(mes) + ": ");
+            ((BaseComissionado)folhaDePagamento[mes][3]).setVendasMensal(sc.nextDouble());
+            System.out.println();
+
+            System.out.print("\nNúmero de faturas que serão adicionadas no mês de " + mesAtual(mes) + " (máximo: " + FATURAS + "): ");
+            int numero_faturas  = sc.nextInt();
+
+            for(int idFatura = 0; idFatura < numero_faturas; idFatura++) {
+                faturas[mes][idFatura] = new Fatura();
+                System.out.print("\n***********Preechimento de informações da fatura************\n");
+                System.out.println("Mês - " + mesAtual(mes));
+                System.out.println("ID Fatura - #F0" + (idFatura+1));
+                System.out.print("\nDescrição: ");
+                faturas[mes][idFatura].setDescricao(sc.nextLine());
+                System.out.print("\nNúmero da fatura: ");
+                faturas[mes][idFatura].setNumero(sc.nextLine());
+                System.out.print("Quantidade: ");
+                faturas[mes][idFatura].setQuantidade(sc.nextInt());
+                System.out.print("Preço: ");
+                faturas[mes][idFatura].setPreco(sc.nextDouble());
+            }
         }
-        System.out.println("Janeiro");
-        System.out.println("Valor pago ao funcionário 01: " + folhaPag[0][0].ganhos());
-        System.out.println("Valor pago ao funcionário 02: " + folhaPag[0][1].ganhos());
-        System.out.println("Valor pago ao funcionário 03: " + folhaPag[0][2].ganhos());
-        System.out.println("Valor pago ao funcionário 04: " + folhaPag[0][3].ganhos());
-        System.out.println("Gastos totais: " + (folhaPag[0][0].ganhos() + folhaPag[0][1].ganhos() + folhaPag[0][2].ganhos() + folhaPag[0][3].ganhos()));
 
-        //Valores para Fevereiro
-        malukoComissionado01.setVendasMensal(45000.00);
-        malukoHorista01.setHorasTrab(150);
-        malukoBaseComissionado01.setVendasMensal(4500.00);
-        for (int j=0; j<4; j++){
-            folhaPag[1][j] = empregados[j];
-        }
-        System.out.println("\nFevereiro");
-        System.out.println("Valor pago ao funcionário 01: " + folhaPag[1][0].ganhos());
-        System.out.println("Valor pago ao funcionário 02: " + folhaPag[1][1].ganhos());
-        System.out.println("Valor pago ao funcionário 03: " + folhaPag[1][2].ganhos());
-        System.out.println("Valor pago ao funcionário 04: " + folhaPag[1][3].ganhos());
-        System.out.println("Gastos totais: " + (folhaPag[1][0].ganhos() + folhaPag[1][1].ganhos() + folhaPag[1][2].ganhos() + folhaPag[1][3].ganhos()));
+        exibirFolhaDePagamento(folhaDePagamento, faturas);
 
-        //Valores para Março
-        malukoComissionado01.setVendasMensal(19000.00);
-        malukoHorista01.setHorasTrab(175);
-        malukoBaseComissionado01.setVendasMensal(6000.00);
-        for (int j=0; j<4; j++){
-            folhaPag[2][j] = empregados[j];
-        }
-        System.out.println("\nMarço");
-        System.out.println("Valor pago ao funcionário 01: " + folhaPag[2][0].ganhos());
-        System.out.println("Valor pago ao funcionário 02: " + folhaPag[2][1].ganhos());
-        System.out.println("Valor pago ao funcionário 03: " + folhaPag[2][2].ganhos());
-        System.out.println("Valor pago ao funcionário 04: " + folhaPag[2][3].ganhos());
-        System.out.println("Gastos totais: " + (folhaPag[2][0].ganhos() + folhaPag[2][1].ganhos() + folhaPag[2][2].ganhos() + folhaPag[2][3].ganhos()));
-
-        //Valores para Abril
-        malukoComissionado01.setVendasMensal(20000.00);
-        malukoHorista01.setHorasTrab(180);
-        malukoBaseComissionado01.setVendasMensal(6500.00);
-        for (int j=0; j<4; j++){
-            folhaPag[3][j] = empregados[j];
-        }
-        System.out.println("\nAbril");
-        System.out.println("Valor pago ao funcionário 01: " + folhaPag[3][0].ganhos());
-        System.out.println("Valor pago ao funcionário 02: " + folhaPag[3][1].ganhos());
-        System.out.println("Valor pago ao funcionário 03: " + folhaPag[3][2].ganhos());
-        System.out.println("Valor pago ao funcionário 04: " + folhaPag[3][3].ganhos());
-        System.out.println("Gastos totais: " + (folhaPag[3][0].ganhos() + folhaPag[3][1].ganhos() + folhaPag[3][2].ganhos() + folhaPag[3][3].ganhos()));
-
-        //Valores para Maio
-        malukoComissionado01.setVendasMensal(20000.00);
-        malukoHorista01.setHorasTrab(180);
-        malukoBaseComissionado01.setVendasMensal(6500.00);
-        for (int j=0; j<4; j++){
-            folhaPag[4][j] = empregados[j];
-        }
-        System.out.println("\nMaio");
-        System.out.println("Valor pago ao funcionário 01: " + folhaPag[4][0].ganhos());
-        System.out.println("Valor pago ao funcionário 02: " + folhaPag[4][1].ganhos());
-        System.out.println("Valor pago ao funcionário 03: " + folhaPag[4][2].ganhos());
-        System.out.println("Valor pago ao funcionário 04: " + folhaPag[4][3].ganhos());
-        System.out.println("Gastos totais: " + (folhaPag[4][0].ganhos() + folhaPag[4][1].ganhos() + folhaPag[4][2].ganhos() + folhaPag[4][3].ganhos()));
-
-        //Valores para Junho
-        malukoComissionado01.setVendasMensal(19000.00);
-        malukoHorista01.setHorasTrab(175);
-        malukoBaseComissionado01.setVendasMensal(6000.00);
-        for (int j=0; j<4; j++){
-            folhaPag[5][j] = empregados[j];
-        }
-        System.out.println("\nJunho");
-        System.out.println("Valor pago ao funcionário 01: " + folhaPag[5][0].ganhos());
-        System.out.println("Valor pago ao funcionário 02: " + folhaPag[5][1].ganhos());
-        System.out.println("Valor pago ao funcionário 03: " + folhaPag[5][2].ganhos());
-        System.out.println("Valor pago ao funcionário 04: " + folhaPag[5][3].ganhos());
-        System.out.println("Gastos totais: " + (folhaPag[5][0].ganhos() + folhaPag[5][1].ganhos() + folhaPag[5][2].ganhos() + folhaPag[5][3].ganhos()));
-
-        //Valores para Julho
-        malukoComissionado01.setVendasMensal(20000.00);
-        malukoHorista01.setHorasTrab(180);
-        malukoBaseComissionado01.setVendasMensal(6500.00);
-        for (int j=0; j<4; j++){
-            folhaPag[6][j] = empregados[j];
-        }
-        System.out.println("\nJulho");
-        System.out.println("Valor pago ao funcionário 01: " + folhaPag[6][0].ganhos());
-        System.out.println("Valor pago ao funcionário 02: " + folhaPag[6][1].ganhos());
-        System.out.println("Valor pago ao funcionário 03: " + folhaPag[6][2].ganhos());
-        System.out.println("Valor pago ao funcionário 04: " + folhaPag[6][3].ganhos());
-        System.out.println("Gastos totais: " + (folhaPag[6][0].ganhos() + folhaPag[6][1].ganhos() + folhaPag[6][2].ganhos() + folhaPag[6][3].ganhos()));
-
-        //Valores para Agosto
-        malukoComissionado01.setVendasMensal(20000.00);
-        malukoHorista01.setHorasTrab(180);
-        malukoBaseComissionado01.setVendasMensal(6500.00);
-        for (int j=0; j<4; j++){
-            folhaPag[7][j] = empregados[j];
-        }
-        System.out.println("\nAgosto");
-        System.out.println("Valor pago ao funcionário 01: " + folhaPag[7][0].ganhos());
-        System.out.println("Valor pago ao funcionário 02: " + folhaPag[7][1].ganhos());
-        System.out.println("Valor pago ao funcionário 03: " + folhaPag[7][2].ganhos());
-        System.out.println("Valor pago ao funcionário 04: " + folhaPag[7][3].ganhos());
-        System.out.println("Gastos totais: " + (folhaPag[7][0].ganhos() + folhaPag[7][1].ganhos() + folhaPag[7][2].ganhos() + folhaPag[7][3].ganhos()));
-
-        //Valores para Setembro
-        malukoComissionado01.setVendasMensal(19000.00);
-        malukoHorista01.setHorasTrab(175);
-        malukoBaseComissionado01.setVendasMensal(6000.00);
-        for (int j=0; j<4; j++){
-            folhaPag[8][j] = empregados[j];
-        }
-        System.out.println("\nSetembro");
-        System.out.println("Valor pago ao funcionário 01: " + folhaPag[8][0].ganhos());
-        System.out.println("Valor pago ao funcionário 02: " + folhaPag[8][1].ganhos());
-        System.out.println("Valor pago ao funcionário 03: " + folhaPag[8][2].ganhos());
-        System.out.println("Valor pago ao funcionário 04: " + folhaPag[8][3].ganhos());
-        System.out.println("Gastos totais: " + (folhaPag[8][0].ganhos() + folhaPag[8][1].ganhos() + folhaPag[8][2].ganhos() + folhaPag[8][3].ganhos()));
-
-        //Valores para Outubro
-        malukoComissionado01.setVendasMensal(20000.00);
-        malukoHorista01.setHorasTrab(180);
-        malukoBaseComissionado01.setVendasMensal(6500.00);
-        for (int j=0; j<4; j++){
-            folhaPag[9][j] = empregados[j];
-        }
-        System.out.println("\nOutubro");
-        System.out.println("Valor pago ao funcionário 01: " + folhaPag[9][0].ganhos());
-        System.out.println("Valor pago ao funcionário 02: " + folhaPag[9][1].ganhos());
-        System.out.println("Valor pago ao funcionário 03: " + folhaPag[9][2].ganhos());
-        System.out.println("Valor pago ao funcionário 04: " + folhaPag[9][3].ganhos());
-        System.out.println("Gastos totais: " + (folhaPag[9][0].ganhos() + folhaPag[9][1].ganhos() + folhaPag[9][2].ganhos() + folhaPag[9][3].ganhos()));
-
-        //Valores para Novembro
-        malukoComissionado01.setVendasMensal(20000.00);
-        malukoHorista01.setHorasTrab(180);
-        malukoBaseComissionado01.setVendasMensal(6500.00);
-        for (int j=0; j<4; j++){
-            folhaPag[10][j] = empregados[j];
-        }
-        System.out.println("\nNovembro");
-        System.out.println("Valor pago ao funcionário 01: " + folhaPag[10][0].ganhos());
-        System.out.println("Valor pago ao funcionário 02: " + folhaPag[10][1].ganhos());
-        System.out.println("Valor pago ao funcionário 03: " + folhaPag[10][2].ganhos());
-        System.out.println("Valor pago ao funcionário 04: " + folhaPag[10][3].ganhos());
-        System.out.println("Gastos totais: " + (folhaPag[10][0].ganhos() + folhaPag[10][1].ganhos() + folhaPag[10][2].ganhos() + folhaPag[10][3].ganhos()));
-
-        //Valores para Dezembro
-        malukoComissionado01.setVendasMensal(19000.00);
-        malukoHorista01.setHorasTrab(175);
-        malukoBaseComissionado01.setVendasMensal(6000.00);
-        for (int j=0; j<4; j++){
-            folhaPag[11][j] = empregados[j];
-        }
-        System.out.println("\nDezembro");
-        System.out.println("Valor pago ao funcionário 01: " + folhaPag[11][0].ganhos());
-        System.out.println("Valor pago ao funcionário 02: " + folhaPag[11][1].ganhos());
-        System.out.println("Valor pago ao funcionário 03: " + folhaPag[11][2].ganhos());
-        System.out.println("Valor pago ao funcionário 04: " + folhaPag[11][3].ganhos());
-        System.out.println("Gastos totais: " + (folhaPag[11][0].ganhos() + folhaPag[11][1].ganhos() + folhaPag[11][2].ganhos() + folhaPag[11][3].ganhos()));
-
-        System.out.println(empregados[0].toString());
-        System.out.println(empregados[1].toString());
-        System.out.println(empregados[2].toString());
-        System.out.println(empregados[3].toString());
     }
+
+    public static String mesAtual(int mes){
+
+        if(mes == 0){
+            return "Janeiro";
+        }else if(mes == 1){
+            return "Fevereiro";
+        }else if(mes == 2){
+            return "Março";
+        }else if(mes == 3){
+            return "Abril";
+        }else if(mes == 4){
+            return "Maio";
+        }else if(mes == 5){
+            return "Junho";
+        }else if(mes == 6){
+            return "Julho";
+        }else if(mes == 7){
+            return "Agosto";
+        }else if(mes == 8){
+            return "Setembro";
+        }else if(mes == 9){
+            return "Outubro";
+        }else if(mes == 10){
+            return "Novembro";
+        }else{
+            return "Dezembro";
+        }
+    }
+
+    public static void exibirFolhaDePagamento(Empregado[][] folhaDePagamento, Fatura[][] faturas){
+
+        for(int mes = 0; mes < MESES; mes++){
+            System.out.println("\n**********" + mesAtual(mes) + "**********");
+            for(int funionario = 0; funionario < folhaDePagamento[mes].length; funionario++){
+
+                //Converte Date em LocalDate, assim pegando os meses e transformando em números
+                LocalDate localDate = folhaDePagamento[mes][funionario].getDataNasc().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+
+                if(localDate.getMonth().getValue() == (mes+1)) {
+                    System.out.print(folhaDePagamento[mes][funionario].toString());
+                    System.out.println("Pagamento extra pelo mês de aniversário: " + (folhaDePagamento[mes][funionario].getValorPagto()+200));
+                }else{
+                    System.out.println(folhaDePagamento[mes][funionario].toString());
+                }
+            }
+
+            System.out.println("***************Informações da fatura do mês de " + mesAtual(mes) + "***************");
+
+            for(int idFatura = 0; idFatura < faturas[mes].length; idFatura++){
+                if(faturas[mes][idFatura] != null) {
+                    System.out.println("Número da fatura: " + faturas[mes][idFatura].getNumero());
+                    System.out.println("Descrição: " + faturas[mes][idFatura].getDescricao());
+                    System.out.println("Valor da fatura: " + faturas[mes][idFatura].getValorPagto());
+                }
+            }
+        }
+    }
+
 }

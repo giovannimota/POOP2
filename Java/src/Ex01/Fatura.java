@@ -6,16 +6,10 @@ public class Fatura implements Pagavel{
     private int quantidade;
     private double preco;
 
-    public Fatura(String numero, String descricao, int quatidade, double preco) {
-        this.numero = numero;
-        this.descricao = descricao;
-        this.quantidade = quatidade;
-        this.preco = preco;
-    }
 
     @Override
-    public double getValorPagto() {
-        return 0.0;
+    public  double getValorPagto() {
+        return (getQuantidade() * getPreco());
     }
 
     public String getNumero() {
@@ -30,8 +24,8 @@ public class Fatura implements Pagavel{
         return descricao;
     }
 
-    public void setDescricao(String descriacao) {
-        this.descricao = descriacao;
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 
     public int getQuantidade() {

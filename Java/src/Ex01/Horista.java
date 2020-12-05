@@ -1,12 +1,16 @@
 package Ex01;
 
+import java.util.Date;
+
 public class Horista extends Empregado{
     private double valorHora;
     private double horasTrab;
 
-    public Horista(String nome, String sobrenome, String cpf) {
-        super(nome, sobrenome, cpf);
+    public Horista(String nome, String sobrenome, String cpf, Date dataNasc) {
+        super(nome, sobrenome, cpf, dataNasc);
     }
+
+    public Horista() {};
 
     @Override
     public String toString() {
@@ -27,6 +31,11 @@ public class Horista extends Empregado{
         horaExtra = horasTrab - 160;
 
         return (valorHora * 160) + (horaExtra * 1.5 * valorHora);
+    }
+
+    @Override
+    public double getValorPagto() {
+        return this.ganhos();
     }
 
     public double getValorHora() {

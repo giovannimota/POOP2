@@ -1,11 +1,16 @@
 package Ex01;
 
+import java.util.Date;
+
 public class Assalariado extends Empregado{
 
-    public Assalariado(String nome, String sobrenome, String cpf) {
-        super(nome, sobrenome, cpf);
+    public Assalariado(String nome, String sobrenome, String cpf, Date dataNAsc) {
+        super(nome, sobrenome, cpf, dataNAsc);
     }
+
+    public Assalariado(){};
     private double salarioMensal;
+
     @Override
     public String toString() {
         return ("\nEmpregado: Assalariado\n" +
@@ -18,6 +23,11 @@ public class Assalariado extends Empregado{
         return this.salarioMensal;
     }
 
+    @Override
+    public double getValorPagto() {
+        return this.ganhos();
+    }
+
     public double getSalarioMensal() {
         return salarioMensal;
     }
@@ -25,4 +35,5 @@ public class Assalariado extends Empregado{
     public void setSalarioMensal(double salarioMensal) {
         this.salarioMensal = salarioMensal;
     }
+
 }

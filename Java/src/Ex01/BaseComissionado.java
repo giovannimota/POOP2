@@ -1,11 +1,15 @@
 package Ex01;
 
+import java.util.Date;
+
 public class BaseComissionado extends Comissionado{
     private double  salarioBase;
 
-    public BaseComissionado(String nome, String sobrenome, String cpf) {
-        super(nome, sobrenome, cpf);
+    public BaseComissionado(String nome, String sobrenome, String cpf, Date dataNasc) {
+        super(nome, sobrenome, cpf, dataNasc);
     }
+
+    public BaseComissionado() {};
 
     @Override
     public String toString() {
@@ -17,12 +21,12 @@ public class BaseComissionado extends Comissionado{
 
     @Override
     public double ganhos() {
-        return ((salarioBase * 1.1) + (getVendasMensal() * getPercComissao())/100);
+        return (salarioBase + (getVendasMensal() * getPercComissao())/100);
     }
 
     @Override
     public double getValorPagto() {
-        return (0.1 * this.salarioBase);
+        return this.salarioBase;
     }
 
     public double getSalarioBase() { return salarioBase; }
