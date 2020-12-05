@@ -28,57 +28,71 @@ public class Menu {
 
         for (int mes = 0; mes < MESES; mes++) {
 
-            Date dataDeNascimento = formato.parse("1/1/1991");
-            folhaDePagamento[mes][0] = new Assalariado("Fábio", "Carvalho", "111.111.111-11",dataDeNascimento);
+            Date dataDeNascimento = formato.parse("1/1/1970");
+            folhaDePagamento[mes][0] = new Assalariado("Tony", "Stark", "345.453.233-11",dataDeNascimento);
             ((Assalariado)folhaDePagamento[mes][0]).setSalarioMensal(salarioMensal);
 
-            dataDeNascimento = formato.parse("2/2/1992");
-            folhaDePagamento[mes][1] = new Horista("Nicolas", "Meles", "222.222.222-22",dataDeNascimento);
+            dataDeNascimento = formato.parse("2/2/1918");
+            folhaDePagamento[mes][1] = new Horista("Steve", "Rogers", "¨542.654.783-10",dataDeNascimento);
             ((Horista)folhaDePagamento[mes][1]).setValorHora(valorHora);
             System.out.println("----------Horista----------");
             System.out.print("Número de horas trabalhadas do funcionário " + folhaDePagamento[mes][1].getNome() + " no mês de " + mesAtual(mes) + ": ");
             ((Horista)folhaDePagamento[mes][1]).setHorasTrab(sc.nextDouble());
+            clearBuffer(sc);
             System.out.println();
 
-            dataDeNascimento = formato.parse("3/3/1993");
-            folhaDePagamento[mes][2] = new Comissionado("Joana", "Moreira", "333.333.333-33",dataDeNascimento);
+            dataDeNascimento = formato.parse("3/3/1969");
+            folhaDePagamento[mes][2] = new Comissionado("Bruce", "Benner", "541.433.786-59",dataDeNascimento);
             ((Comissionado)folhaDePagamento[mes][2]).setPercComissao(percComissao);
             System.out.println("\n----------Comissionado----------");
             System.out.print("Valor das vendas do funcionário " + folhaDePagamento[mes][2].getNome() + " no mês de " + mesAtual(mes) + ": ");
             ((Comissionado)folhaDePagamento[mes][2]).setVendasMensal(sc.nextDouble());
+            clearBuffer(sc);
             System.out.println();
 
 
-            dataDeNascimento = formato.parse("4/4/1994");
-            folhaDePagamento[mes][3] = new BaseComissionado("Márcia", "Rezende", "444.444.444-44", dataDeNascimento);
+            dataDeNascimento = formato.parse("4/4/1984");
+            folhaDePagamento[mes][3] = new BaseComissionado("Natasha", "Romanoff", "343.654.122.89", dataDeNascimento);
             ((BaseComissionado)folhaDePagamento[mes][3]).setSalarioBase(salarioMensal);
             ((BaseComissionado)folhaDePagamento[mes][3]).setPercComissao(percBaseComissao);
             System.out.println("\n-----------Base Comissionado----------");
             System.out.print("Valor das vendas do funcionário " + folhaDePagamento[mes][3].getNome() + " no mês de " + mesAtual(mes) + ": ");
             ((BaseComissionado)folhaDePagamento[mes][3]).setVendasMensal(sc.nextDouble());
+            clearBuffer(sc);
             System.out.println();
 
             System.out.print("\nNúmero de faturas que serão adicionadas no mês de " + mesAtual(mes) + " (máximo: " + FATURAS + "): ");
             int numero_faturas  = sc.nextInt();
+            clearBuffer(sc);
 
             for(int idFatura = 0; idFatura < numero_faturas; idFatura++) {
                 faturas[mes][idFatura] = new Fatura();
-                System.out.print("\n***********Preechimento de informações da fatura************\n");
+                System.out.print("\n*********** Preechimento de informações da fatura ************\n");
                 System.out.println("Mês - " + mesAtual(mes));
                 System.out.println("ID Fatura - #F0" + (idFatura+1));
-                System.out.print("\nDescrição: ");
+                System.out.print("Descrição: ");
                 faturas[mes][idFatura].setDescricao(sc.nextLine());
-                System.out.print("\nNúmero da fatura: ");
+                System.out.print("Número da fatura: ");
                 faturas[mes][idFatura].setNumero(sc.nextLine());
                 System.out.print("Quantidade: ");
                 faturas[mes][idFatura].setQuantidade(sc.nextInt());
+                clearBuffer(sc);
                 System.out.print("Preço: ");
                 faturas[mes][idFatura].setPreco(sc.nextDouble());
+                clearBuffer(sc);
+                System.out.println();
             }
         }
+        sc.close();
 
         exibirFolhaDePagamento(folhaDePagamento, faturas);
 
+    }
+
+    private static void clearBuffer(Scanner scanner) {
+        if (scanner.hasNextLine()) {
+            scanner.nextLine();
+        }
     }
 
     public static String mesAtual(int mes){
@@ -113,7 +127,7 @@ public class Menu {
     public static void exibirFolhaDePagamento(Empregado[][] folhaDePagamento, Fatura[][] faturas){
 
         for(int mes = 0; mes < MESES; mes++){
-            System.out.println("\n**********" + mesAtual(mes) + "**********");
+            System.out.println("\n********** " + mesAtual(mes) + " **********");
             for(int funionario = 0; funionario < folhaDePagamento[mes].length; funionario++){
 
                 //Converte Date em LocalDate, assim pegando os meses e transformando em números
@@ -121,13 +135,13 @@ public class Menu {
 
                 if(localDate.getMonth().getValue() == (mes+1)) {
                     System.out.print(folhaDePagamento[mes][funionario].toString());
-                    System.out.println("Pagamento extra pelo mês de aniversário: " + (folhaDePagamento[mes][funionario].getValorPagto()+200));
+                    System.out.println("Pagamento extra pelo mês de aniversário: R$200");
                 }else{
                     System.out.println(folhaDePagamento[mes][funionario].toString());
                 }
             }
 
-            System.out.println("***************Informações da fatura do mês de " + mesAtual(mes) + "***************");
+            System.out.println("*************** Informações das faturas do mês de " + mesAtual(mes) + " ***************");
 
             for(int idFatura = 0; idFatura < faturas[mes].length; idFatura++){
                 if(faturas[mes][idFatura] != null) {

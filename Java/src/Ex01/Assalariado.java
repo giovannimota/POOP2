@@ -15,7 +15,7 @@ public class Assalariado extends Empregado{
     public String toString() {
         return ("\nEmpregado: Assalariado\n" +
                 "Nome: " + getNome() + " " + getSobrenome() + "\n" +
-                "CPF: " + getCpf() + "\n" + "Salário mensal: " + this.salarioMensal + "\n");
+                "CPF: " + getCpf() + "\n" + "Salário mensal: R$" + this.salarioMensal + "\n");
     }
 
     @Override

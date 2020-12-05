@@ -17,7 +17,7 @@ public class Horista extends Empregado{
         return ("\nEmpregado: Horista\n" +
                 "Nome: " + getNome() + " " + getSobrenome() + "\n" +
                 "CPF: " + getCpf() + "\n" +
-                "Salário: " + ganhos() + "\n");
+                "Salário: R$" + ganhos() + "\n");
     }
 
     @Override

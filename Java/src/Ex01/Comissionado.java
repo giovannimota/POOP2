@@ -17,7 +17,7 @@ public class Comissionado extends Empregado{
         return ("\nEmpregado: Comissionado\n" +
                 "Nome: " + getNome() + " " + getSobrenome() + "\n" +
                 "CPF: " + getCpf() + "\n" +
-                "Salario: " + ganhos() + "\n");
+                "Salario: R$" + ganhos() + "\n");
     }
 
 
