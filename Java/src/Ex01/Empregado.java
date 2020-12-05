@@ -1,15 +1,21 @@
 package Ex01;
 
-public class Empregado implements Pagavel{
+import java.util.Date;
+
+public abstract class Empregado implements Pagavel{
     private String nome;
     private String sobrenome;
     private String cpf;
+    private Date dataNasc;
 
-    public Empregado(String nome, String sobrenome, String cpf) {
+    public Empregado(String nome, String sobrenome, String cpf, Date dataNasc) {
         this.nome = nome;
         this.sobrenome = sobrenome;
         this.cpf = cpf;
+        this.dataNasc = dataNasc;
     }
+
+    public Empregado() {};
 
     @Override
     public double getValorPagto() {
@@ -48,5 +54,14 @@ public class Empregado implements Pagavel{
     public void setCpf(String cpf) {
         this.cpf = cpf;
     }
+
+    public Date getDataNasc() {
+        return dataNasc;
+    }
+
+    public void setDataNasc(Date dataNasc) {
+        this.dataNasc = dataNasc;
+    }
+
 
 }
