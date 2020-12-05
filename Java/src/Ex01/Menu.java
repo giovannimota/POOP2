@@ -1,10 +1,17 @@
 package Ex01;
 
 /****************************************
+<<<<<<< HEAD
  * Grupo                                 *
  * Nome: Murilo Gomes da Costa Damario   *
  * Nome: Giovanni Rafael Mota            *
  * **************************************/
+=======
+* Grupo                                 *
+* Nome: Murilo Gomes da Costa Damario   *
+* Nome: Giovanni Rafael Mota            *
+* **************************************/
+>>>>>>> 911ecf585fe90d6452f15d74d8384e775448d150
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
